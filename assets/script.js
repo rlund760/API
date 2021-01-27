@@ -11,6 +11,14 @@ $.ajax({
     'method':'GET'
 }).then(function(weather){
     console.log(weather)
+    $("#current").html(`
+    <h3>${city}</h3>
+    <p>Temp: ${weather.main.temp}</p>
+    <img src='http://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png' />
+    <p>Description: ${weather.weather[0].description}</p>
+    <p>Humidity: ${weather.main.humidity}</p>
+    <p>Wind Speed: ${weather.wind.speed}</p>
+    `)
 })
 
    
