@@ -19,7 +19,20 @@ $.ajax({
     <p>Humidity: ${weather.main.humidity}</p>
     <p>Wind Speed: ${weather.wind.speed}</p>
     `)
+    var lon= weather.coord.lon
+    var lat= weather.coord.lat
+    uvIndex(lat,lon)
 })
 
    
+}
+function uvIndex(lat,lon){
+    var url=`https://api.openweathermap.org/data/2.5/uvi?lat=${lat}&lon=${lon}&appid=${apiKey}`
+$.ajax({
+    'url':url, 
+    'method':'GET'
+}).then(function(weather){
+    console.log(weather)
+    $('#current').append(`uv index:${weather.value}`)
+})
 }
